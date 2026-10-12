@@ -2,7 +2,19 @@
 
 A dependency-free Manifest V3 Chrome/Edge extension that reads visible participant questions, requests an AI answer, and lets you apply it. Automatic mode detects new questions and generates suggestions while the popup or side panel remains visible. It does not click Submit automatically; selecting a radio option may itself submit on some pages. Requires Chrome 116+ or an Edge version supporting the Side Panel API.
 
-## Install
+## Download and install on Windows Chrome
+
+[Download Minti for Chrome (ZIP)](https://github.com/ishu7w/minti/releases/latest/download/minti-chrome.zip)
+
+1. Download the ZIP, right-click it in File Explorer, and choose **Extract All**.
+2. Move the extracted `minti-chrome` folder somewhere permanent, such as `Documents\Minti`.
+3. In Chrome, open `chrome://extensions` and enable **Developer mode**.
+4. Click **Load unpacked** and select the `minti-chrome` folder containing `manifest.json`.
+5. Pin Minti from Chrome's Extensions menu and configure your provider.
+
+Keep the extracted folder; Chrome loads the extension from it. Opening `popup.html` directly displays a preview only. This ZIP requires manual installation; it is not a Chrome Web Store listing. The same package works with the unpacked installation process on macOS and Linux. Requires Chrome 116+. The extension contains no native binaries or operating-system-specific paths. Windows runtime behavior has not yet been tested on a Windows machine. Managed Chrome may restrict Developer mode.
+
+## Install from source
 
 1. Open `chrome://extensions` (Edge: `edge://extensions`).
 2. Enable **Developer mode**.

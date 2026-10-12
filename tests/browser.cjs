@@ -1,6 +1,7 @@
 const {chromium} = require('playwright');
 const assert = require('node:assert/strict');
 const path = require('node:path');
+const {pathToFileURL} = require('node:url');
 (async () => {
  const browser = await chromium.launch({headless:true,channel:'chrome'});
  const page = await browser.newPage();
@@ -33,7 +34,7 @@ const path = require('node:path');
    return {ok:true,json:async()=>({choices:[{message:{content:question.includes('next')?'5':'4'}}]})};
   };
  });
- await page.goto('file://'+path.resolve('extension/popup.html'));
+ await page.goto(pathToFileURL(path.resolve('extension/popup.html')).href);
  await page.evaluate(() => {
   const frame=document.createElement('iframe');frame.id='fixture';document.body.append(frame);
   frame.contentDocument.body.innerHTML='<h1>What is 2 + 2?</h1><label><input type="radio" name="a">3</label><label><input type="radio" name="a">4</label>';
@@ -109,7 +110,7 @@ const path = require('node:path');
  await page.evaluate(()=>{delete window.chrome;});
  // Preview path is tested in a clean browser context without the mock.
  const preview=await browser.newPage(); const previewErrors=[];preview.on('pageerror',e=>previewErrors.push(e.message));
- await preview.goto('file://'+path.resolve('extension/popup.html'));
+ await preview.goto(pathToFileURL(path.resolve('extension/popup.html')).href);
  await preview.waitForFunction(()=>document.getElementById('status').textContent.includes('Preview only'));
  assert.equal(await preview.isDisabled('#ask'),true);
  assert.deepEqual(errors,[]);assert.deepEqual(previewErrors,[]);
