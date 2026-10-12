@@ -1,0 +1,11 @@
+{
+  "manifest_version": 3,
+  "name": "Minti Answer Assistant",
+  "version": "0.2.0",
+  "minimum_chrome_version": "116",
+  "description": "Read visible Menti questions and request answers from your chosen compatible AI provider.",
+  "permissions": ["activeTab", "scripting", "storage", "sidePanel"],
+  "optional_host_permissions": ["https://*/*", "http://localhost/*", "http://127.0.0.1/*"],
+  "action": {"default_popup": "popup.html"},
+  "side_panel": {"default_path": "popup.html"}
+}

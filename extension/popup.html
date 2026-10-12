@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Minti</title><link rel="stylesheet" href="popup.css"></head>
+<body><header><small>MENTI ANSWER ASSISTANT</small><h1>Your question, answered.</h1></header>
+<button id="panel" type="button">Open persistent side panel</button>
+<details id="provider-settings" open><summary>Provider settings</summary>
+<form id="settings">
+<label>API base URL<input id="base" type="url" value="https://api.openai.com/v1" required></label>
+<label>API key<input id="key" type="password" autocomplete="off" placeholder="Your provider’s key (optional for local servers)"></label>
+<label>Model<input id="model" value="gpt-4o-mini" required></label>
+<button>Save &amp; allow provider</button></form>
+<button id="forget" type="button" class="secondary">Clear saved key</button>
+<p class="note">Key stays in browser session storage until the browser closes. Questions and options are sent to your configured provider.</p>
+</details>
+<label class="toggle"><input id="watch" type="checkbox"> Automatically answer new questions while this panel is open</label>
+<label>Question<textarea id="question" rows="3" placeholder="Read from the page, or paste a question here"></textarea></label>
+<label>Choices (one per line)<textarea id="choices" rows="3" placeholder="Leave empty for a text answer"></textarea></label>
+<div class="actions"><button id="read" type="button">Read page</button><button id="ask" type="button">Ask AI</button></div>
+<button id="stop" type="button" class="secondary" disabled>Cancel request</button>
+<section aria-live="polite"><p id="status">Open a participant question on menti.com to begin.</p><div id="answer"></div></section>
+<button id="apply" type="button" disabled>Apply answer</button>
+<button id="copy" type="button" class="secondary" disabled>Copy answer</button>
+<p class="note">Selecting an option may immediately cast your vote. AI answers can be wrong. Review before applying.</p>
+<script src="page.js"></script><script src="popup.js"></script></body></html>

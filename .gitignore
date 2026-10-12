@@ -1,0 +1,9 @@
+node_modules/
+.DS_Store
+.env
+.env.*
+*.log
+__pycache__/
+*.pyc
+playwright-report/
+test-results/
